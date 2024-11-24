@@ -1530,8 +1530,8 @@ RectTransform:
   - {fileID: 1348085120}
   - {fileID: 1914443748}
   - {fileID: 1687489329}
-  - {fileID: 1845847387}
   - {fileID: 1220304118}
+  - {fileID: 1845847387}
   - {fileID: 1330739440}
   - {fileID: 1677548788}
   - {fileID: 1334242181}
@@ -4217,6 +4217,8 @@ GameObject:
   - component: {fileID: 805676967}
   - component: {fileID: 805676966}
   - component: {fileID: 805676968}
+  - component: {fileID: 805676970}
+  - component: {fileID: 805676969}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -4236,11 +4238,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91e128c99c44be42ac721e7264ab72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ONOFFSETTINGDisplayText: {fileID: 0}
-  KEYBINDSETTINGDisplayText: {fileID: 0}
-  KEYBINDSETTINGInputFieldKeybind: {fileID: 1823200880}
-  VOLUMESETTINGDisplayText: {fileID: 0}
-  VOLUMESETTINGInputField: {fileID: 245634780}
+  MotionBlurDisplayText: {fileID: 1523378520}
+  BloomDisplayText: {fileID: 1245812950}
+  DepthofFieldDisplayText: {fileID: 1582092669}
+  ShadersDisplayText: {fileID: 1426825420}
+  WeatherEffectsDisplayText: {fileID: 284171697}
+  MoveForwardDisplayText: {fileID: 129715127}
+  MoveForwardInputField: {fileID: 1823200880}
+  MoveBackwardDisplayText: {fileID: 185194143}
+  MoveBackwardInputField: {fileID: 245634780}
+  MoveRightwardDisplayText: {fileID: 604804609}
+  MoveRightwardInputField: {fileID: 1756380501}
+  MoveLeftwardDisplayText: {fileID: 713945974}
+  MoveLeftwardInputField: {fileID: 2020821355}
+  MoveUpwardDisplayText: {fileID: 329759380}
+  MoveUpwardInputField: {fileID: 2117046808}
+  MasterVolumeDisplayText: {fileID: 53551033}
+  MasterVolumeInputField: {fileID: 1220304119}
+  MusicVolumeDisplayText: {fileID: 1337020924}
+  MusicVolumeInputField: {fileID: 1845847388}
+  SoundFxVolumeDisplayText: {fileID: 1348085121}
+  SoundFxVolumeInputField: {fileID: 1330739441}
+  DialogueVolumeDisplayText: {fileID: 1914443749}
+  DialogueVolumeInputField: {fileID: 1677548789}
+  UIVolumeDisplayText: {fileID: 1687489330}
+  UIVolumeInputField: {fileID: 1334242182}
 --- !u!4 &805676967
 Transform:
   m_ObjectHideFlags: 0
@@ -4271,6 +4293,55 @@ MonoBehaviour:
   VideoPanel: {fileID: 1380519733}
   KeybindsPanel: {fileID: 1370641769}
   VolumePanel: {fileID: 293647165}
+--- !u!114 &805676969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805676965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f5effd02a208141b744e2d737d9273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MotionBlurDisplayText: {fileID: 1523378520}
+  BloomDisplayText: {fileID: 1245812950}
+  DepthofFieldDisplayText: {fileID: 1582092669}
+  ShadersDisplayText: {fileID: 1426825420}
+  WeatherEffectsDisplayText: {fileID: 284171697}
+  MoveForwardDisplayText: {fileID: 129715127}
+  MoveForwardInputField: {fileID: 1823200880}
+  MoveBackwardDisplayText: {fileID: 185194143}
+  MoveBackwardInputField: {fileID: 245634780}
+  MoveRightwardDisplayText: {fileID: 604804609}
+  MoveRightwardInputField: {fileID: 1756380501}
+  MoveLeftwardDisplayText: {fileID: 713945974}
+  MoveLeftwardInputField: {fileID: 2020821355}
+  MoveUpwardDisplayText: {fileID: 329759380}
+  MoveUpwardInputField: {fileID: 2117046808}
+  MasterVolumeDisplayText: {fileID: 53551033}
+  MasterVolumeInputField: {fileID: 1220304119}
+  MusicVolumeDisplayText: {fileID: 1337020924}
+  MusicVolumeInputField: {fileID: 1845847388}
+  SoundFxVolumeDisplayText: {fileID: 1348085121}
+  SoundFxVolumeInputField: {fileID: 1330739441}
+  DialogueVolumeDisplayText: {fileID: 1914443749}
+  DialogueVolumeInputField: {fileID: 1677548789}
+  UIVolumeDisplayText: {fileID: 1687489330}
+  UIVolumeInputField: {fileID: 1334242182}
+--- !u!114 &805676970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805676965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046536982334f924ab706f9300cda52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823182618
 GameObject:
   m_ObjectHideFlags: 0
