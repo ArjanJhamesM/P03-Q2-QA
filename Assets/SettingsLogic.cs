@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class SettingsMethods : SettingsList
+public class SettingsLogic : SettingsList
 {
     public Dictionary<string, bool> DisplaySettings = new Dictionary<string, bool>
     {
