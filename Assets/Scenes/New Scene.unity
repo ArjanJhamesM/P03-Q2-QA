@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 53551034}
   - component: {fileID: 53551033}
   m_Layer: 5
-  m_Name: SettingNameOne
+  m_Name: VolumeSettingNameOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 129715128}
   - component: {fileID: 129715127}
   m_Layer: 5
-  m_Name: SettingNameOne
+  m_Name: KeybindsSettingNameOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 185194144}
   - component: {fileID: 185194143}
   m_Layer: 5
-  m_Name: SettingNameTwo
+  m_Name: KeybindsSettingNameTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 245634782}
   - component: {fileID: 245634780}
   m_Layer: 5
-  m_Name: SettingInputFieldTwo
+  m_Name: KeybindsSettingInputFieldTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1512,7 +1512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &293647166
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 329759381}
   - component: {fileID: 329759380}
   m_Layer: 5
-  m_Name: SettingNameFive
+  m_Name: KeybindsSettingNameFive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2892,7 +2892,7 @@ GameObject:
   - component: {fileID: 604804610}
   - component: {fileID: 604804609}
   m_Layer: 5
-  m_Name: SettingNameThree
+  m_Name: KeybindsSettingNameThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3506,7 +3506,7 @@ GameObject:
   - component: {fileID: 713945975}
   - component: {fileID: 713945974}
   m_Layer: 5
-  m_Name: SettingNameFour
+  m_Name: KeybindsSettingNameFour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5730,7 +5730,7 @@ GameObject:
   - component: {fileID: 1220304120}
   - component: {fileID: 1220304119}
   m_Layer: 5
-  m_Name: SettingInputFieldOne
+  m_Name: VolumeSettingInputFieldOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6265,7 +6265,7 @@ GameObject:
   - component: {fileID: 1330739442}
   - component: {fileID: 1330739441}
   m_Layer: 5
-  m_Name: SettingInputFieldThree
+  m_Name: VolumeSettingInputFieldThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6440,7 +6440,7 @@ GameObject:
   - component: {fileID: 1334242183}
   - component: {fileID: 1334242182}
   m_Layer: 5
-  m_Name: SettingInputFieldFive
+  m_Name: VolumeSettingInputFieldFive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6614,7 +6614,7 @@ GameObject:
   - component: {fileID: 1337020925}
   - component: {fileID: 1337020924}
   m_Layer: 5
-  m_Name: SettingNameTwo
+  m_Name: VolumeSettingNameTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6751,7 +6751,7 @@ GameObject:
   - component: {fileID: 1348085122}
   - component: {fileID: 1348085121}
   m_Layer: 5
-  m_Name: SettingNameThree
+  m_Name: VolumeSettingNameThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7079,7 +7079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1370641770
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8075,7 +8075,7 @@ GameObject:
   - component: {fileID: 1677548790}
   - component: {fileID: 1677548789}
   m_Layer: 5
-  m_Name: SettingInputFieldFour
+  m_Name: VolumeSettingInputFieldFour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8249,7 +8249,7 @@ GameObject:
   - component: {fileID: 1687489331}
   - component: {fileID: 1687489330}
   m_Layer: 5
-  m_Name: SettingNameFive
+  m_Name: VolumeSettingNameFive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8387,7 +8387,7 @@ GameObject:
   - component: {fileID: 1756380502}
   - component: {fileID: 1756380501}
   m_Layer: 5
-  m_Name: SettingInputFieldThree
+  m_Name: KeybindsSettingInputFieldThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8717,7 +8717,7 @@ GameObject:
   - component: {fileID: 1823200881}
   - component: {fileID: 1823200880}
   m_Layer: 5
-  m_Name: SettingInputFieldOne
+  m_Name: KeybindsSettingInputFieldOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8892,7 +8892,7 @@ GameObject:
   - component: {fileID: 1845847389}
   - component: {fileID: 1845847388}
   m_Layer: 5
-  m_Name: SettingInputFieldTwo
+  m_Name: VolumeSettingInputFieldTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9200,7 +9200,7 @@ GameObject:
   - component: {fileID: 1914443750}
   - component: {fileID: 1914443749}
   m_Layer: 5
-  m_Name: SettingNameFour
+  m_Name: VolumeSettingNameFour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9593,7 +9593,7 @@ GameObject:
   - component: {fileID: 2020821356}
   - component: {fileID: 2020821355}
   m_Layer: 5
-  m_Name: SettingInputFieldFour
+  m_Name: KeybindsSettingInputFieldFour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10291,7 +10291,7 @@ GameObject:
   - component: {fileID: 2117046809}
   - component: {fileID: 2117046808}
   m_Layer: 5
-  m_Name: SettingInputFieldFive
+  m_Name: KeybindsSettingInputFieldFive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
