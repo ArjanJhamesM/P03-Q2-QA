@@ -8,6 +8,13 @@ public class ShowSettingsPanels : MonoBehaviour
     public GameObject KeybindsPanel;
     public GameObject VolumePanel;
 
+    public void FinalizeLoadingPanels()
+    {
+        VideoPanel.SetActive(true);
+        KeybindsPanel.SetActive(false);
+        VolumePanel.SetActive(false);
+    }
+
     public void ShowVideoPanel()
     {
         if (!VideoPanel.activeSelf)
@@ -30,7 +37,7 @@ public class ShowSettingsPanels : MonoBehaviour
 
     public void ShowVolumePanel()
     {
-        if (!VideoPanel.activeSelf)
+        if (!VolumePanel.activeSelf)
         {
             VideoPanel.SetActive(false);
             KeybindsPanel.SetActive(false);
