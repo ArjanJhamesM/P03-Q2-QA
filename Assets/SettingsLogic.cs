@@ -4,155 +4,106 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class SettingsLogic : SettingsList // Inheritance
 {
-    public Dictionary<string, bool> DisplaySettings = new Dictionary<string, bool>
-    {
-
-    };
-
-    public Dictionary<string, string> KeybindSettings = new Dictionary<string, string>
-    {
-
-    };
-
-    public Dictionary<string, int> VolumeSettings = new Dictionary<string, int>
-    {
-
-    };
-
-    
-
-    protected void AddSettingToDictionary(
-        string parameterSettingKey,
-        bool parameterSettingValueBool = false,
-        string parameterSettingValueString = "",
-        int parameterSettingValueInt = -99999) // This is a crappy way to check for the int parameter
-    {
-        //DisplaySettings.Add(parameterSettingKey, parameterSettingValue);
-
-        if ((parameterSettingValueBool) || (!parameterSettingValueBool) && (string.IsNullOrEmpty(parameterSettingValueString)) && (parameterSettingValueInt == -99999))
-        {
-            DisplaySettings.Add(parameterSettingKey, parameterSettingValueBool);
-        }
-        else if ((!string.IsNullOrEmpty(parameterSettingValueString)) && (parameterSettingValueInt == -99999))
-        {
-            KeybindSettings.Add(parameterSettingKey, parameterSettingValueString);
-        }
-        else if ((parameterSettingValueInt > -99999) && (string.IsNullOrEmpty(parameterSettingValueString)))
-        {
-            VolumeSettings.Add(parameterSettingKey, parameterSettingValueInt);
-        }
-    }
-
-    public void ListenForInputFieldChanges(string parameterSettingKey, TMP_InputField parameterInputField, string parameterSettingValueString = "", bool parameterSettingValueBool = false)
-    {
-        parameterSettingValueString = parameterInputField.text;
-
-        if (!string.IsNullOrEmpty(parameterSettingValueString))
-        {
-            Debug.Log(parameterSettingKey + ": " + parameterSettingValueString);
-        }
-        else { Debug.Log(parameterSettingKey + ": " + parameterSettingValueBool) ; }
-        
-    }
-
-    public void AddListenerToInputField(string parameterSettingKey, TMP_InputField parameterInputField, string parameterSettingValueString = "", bool parameterSettingValueBool = false)
-    {
-
-        parameterInputField.onValueChanged.AddListener(delegate { ListenForInputFieldChanges(parameterSettingKey, parameterInputField, parameterSettingValueString, parameterSettingValueBool); });
-    }
-
-    protected void UpdateSettingsWithDictionary(
-        string parameterSettingKey,
+    // Polymorphism (by method overloading)
+    public void LoadSettings( // DRY Principle is not the gospel as I learned the hard way
         string parameterSettingName,
         TextMeshProUGUI parameterSettingDisplayText,
-        TMP_InputField parameterInputField = null,
-        bool parameterSettingValueBool = false,
+        TextMeshProUGUI parameterSettingButtonText,
+        bool parameterSettingValueBool)
+    {
+        parameterSettingDisplayText.text = parameterSettingName;
+        parameterSettingButtonText.text = parameterSettingValueBool ? "ON" : "OFF";
+    }
+
+    public void LoadSettings(
+        string parameterSettingName,
+        TextMeshProUGUI parameterSettingDisplayText,
+        TMP_InputField parameterInputField,
+        string parameterSettingValueString)
+    {
+        parameterSettingDisplayText.text = parameterSettingName;
+        parameterInputField.text = parameterSettingValueString;
+        AddListenerToInputField(parameterSettingName, parameterInputField, listenerParameterSettingValueString: parameterSettingValueString);
+    }
+
+    public void LoadSettings(
+        string parameterSettingName,
+        TextMeshProUGUI parameterSettingDisplayText,
+        TMP_InputField parameterInputField,
+        int parameterSettingValueInt)
+    {
+        parameterSettingDisplayText.text = parameterSettingName;
+        parameterInputField.text = Convert.ToString(parameterSettingValueInt);
+        AddListenerToInputField(parameterSettingName, parameterInputField, listenerParameterSettingValueInt: parameterSettingValueInt);
+    }
+
+    public void ListenForInputFieldChanges(
+        string parameterSettingName,
+        TMP_InputField parameterInputField,
         string parameterSettingValueString = "",
-        int parameterSettingValueInt = -99999)
+        int parameterSettingValueInt = -999999999) // This is a crappy way to check if int parameter exists
     {
-
-        if ((parameterSettingValueBool) ||
-            (!parameterSettingValueBool) && 
-            (string.IsNullOrEmpty(parameterSettingValueString)) && 
-            (parameterSettingValueInt == -99999))
+        if (!string.IsNullOrEmpty(parameterSettingValueString))
         {
-            if ((DisplaySettings.ContainsKey(parameterSettingKey)) ||
-                (KeybindSettings.ContainsKey(parameterSettingKey)) ||
-                (VolumeSettings.ContainsKey(parameterSettingKey)))
-            {
-                parameterSettingValueBool = !parameterSettingValueBool;
-                parameterSettingDisplayText.text = parameterSettingName;
-                parameterInputField.text = parameterSettingValueBool ? "ON" : "OFF";                
-            }
+            parameterSettingValueString = parameterInputField.text;
+            Debug.Log(parameterSettingName + ": " + parameterSettingValueString);
         }
-        else if ((!string.IsNullOrEmpty(parameterSettingValueString)) && (parameterSettingValueInt == -99999))
+        else if (parameterSettingValueInt != -999999999)
         {
-            if ((DisplaySettings.ContainsKey(parameterSettingKey)) ||
-                (KeybindSettings.ContainsKey(parameterSettingKey)) ||
-                (VolumeSettings.ContainsKey(parameterSettingKey)))
+            parameterSettingValueInt = Convert.ToInt32(parameterInputField.text);
+            if (parameterSettingValueInt > 100)
             {
-                parameterSettingDisplayText.text = parameterSettingName;
-                parameterInputField.text = parameterSettingValueString;
-                AddListenerToInputField(parameterSettingKey, parameterInputField, parameterSettingValueString);
-                //AddListenerToInputField(parameterSettingValueString, parameterInputField);
+                parameterSettingValueInt = 100;
+                parameterInputField.text = Convert.ToString(100);
             }
+            Debug.Log(parameterSettingName + ": " + parameterSettingValueInt);
         }
-        else if ((parameterSettingValueInt > -99999) && (string.IsNullOrEmpty(parameterSettingValueString)))
-        {
-            if ((DisplaySettings.ContainsKey(parameterSettingKey)) || (KeybindSettings.ContainsKey(parameterSettingKey)) || (VolumeSettings.ContainsKey(parameterSettingKey)))
-            {
-                parameterSettingDisplayText.text = parameterSettingName;
-                parameterInputField.text = Convert.ToString(parameterSettingValueInt);
-                AddListenerToInputField(parameterSettingKey, parameterInputField, parameterSettingValueString);
-            }
-        }
-    }
-}
 
-public class SettingsMethods : SettingsLogic
-{
-    public void AddToDictionaries()
-    {
-        AddSettingToDictionary(MotionBlurKey, parameterSettingValueBool: MotionBlur);
-        AddSettingToDictionary(BloomKey, parameterSettingValueBool: Bloom);
-        AddSettingToDictionary(DepthofFieldKey, parameterSettingValueBool: DepthOfField);
-        AddSettingToDictionary(ShadersKey, parameterSettingValueBool: Shaders);
-        AddSettingToDictionary(WeatherEffectsKey, parameterSettingValueBool: WeatherEffects);
-
-        AddSettingToDictionary(MoveForwardKey, parameterSettingValueString: MoveForward);
-        AddSettingToDictionary(MoveBackwardKey, parameterSettingValueString: MoveBackward);
-        AddSettingToDictionary(MoveRightwardKey, parameterSettingValueString: MoveRightward);
-        AddSettingToDictionary(MoveLeftwardKey, parameterSettingValueString: MoveLeftward);
-        AddSettingToDictionary(MoveUpwardKey, parameterSettingValueString: MoveUpward);
-
-        AddSettingToDictionary(MasterVolumeKey, parameterSettingValueInt: MasterVolume);
-        AddSettingToDictionary(MusicVolumeKey, parameterSettingValueInt: MusicVolume);
-        AddSettingToDictionary(SoundFxVolumeKey, parameterSettingValueInt: SoundFxVolume);
-        AddSettingToDictionary(DialogueVolumeKey, parameterSettingValueInt: DialogueVolume);
-        AddSettingToDictionary(UIVolumeKey, parameterSettingValueInt: UIVolume);
     }
 
-    public void UpdateAllSettings()
+    public void AddListenerToInputField(
+        string parameterSettingName,
+        TMP_InputField parameterInputField,
+        string listenerParameterSettingValueString = "",
+        int listenerParameterSettingValueInt = -9999999)
     {
-        UpdateSettingsWithDictionary(MotionBlurKey, MotionBlurName, MotionBlurDisplayText, parameterSettingValueBool: DisplaySettings[MotionBlurKey]);
-        UpdateSettingsWithDictionary(BloomKey, BloomName, BloomDisplayText, parameterSettingValueBool: DisplaySettings[BloomKey]);
-        UpdateSettingsWithDictionary(DepthofFieldKey, DepthOfFieldName, DepthofFieldDisplayText, parameterSettingValueBool: DisplaySettings[DepthofFieldKey]);
-        UpdateSettingsWithDictionary(ShadersKey, ShadersName, ShadersDisplayText, parameterSettingValueBool: DisplaySettings[ShadersKey]);
-        UpdateSettingsWithDictionary(WeatherEffectsKey, WeatherEffectsName, WeatherEffectsDisplayText, parameterSettingValueBool: DisplaySettings[WeatherEffectsKey]);
+        parameterInputField.onValueChanged.AddListener(delegate { ListenForInputFieldChanges(parameterSettingName, parameterInputField, listenerParameterSettingValueString, listenerParameterSettingValueInt); });
+    }
 
-        UpdateSettingsWithDictionary(MoveForwardKey, MoveForwardName, MoveForwardDisplayText, parameterInputField: MoveForwardInputField, parameterSettingValueString: KeybindSettings[MoveForwardKey]);
-        UpdateSettingsWithDictionary(MoveBackwardKey, MoveBackwardName, MoveBackwardDisplayText, parameterInputField: MoveBackwardInputField, parameterSettingValueString: KeybindSettings[MoveBackwardKey]);
-        UpdateSettingsWithDictionary(MoveRightwardKey, MoveRightwardName, MoveRightwardDisplayText, parameterInputField: MoveRightwardInputField, parameterSettingValueString: KeybindSettings[MoveRightwardKey]);
-        UpdateSettingsWithDictionary(MoveLeftwardKey, MoveLeftwardName, MoveLeftwardDisplayText, parameterInputField: MoveLeftwardInputField, parameterSettingValueString: KeybindSettings[MoveLeftwardKey]);
-        UpdateSettingsWithDictionary(MoveUpwardKey, MoveUpwardName, MoveUpwardDisplayText, parameterInputField: MoveUpwardInputField, parameterSettingValueString: KeybindSettings[MoveUpwardKey]);
+    public void ToggleMotionBlurButton() // Too drained rn to create reusable methods ngl
+    {
+        _MotionBlur = !_MotionBlur;
+        MotionBlurButtonText.text = _MotionBlur ? "ON" : "OFF";
+        Debug.Log(_MotionBlurName + ": " + _MotionBlur);
+    }
 
-        UpdateSettingsWithDictionary(MasterVolumeKey, MasterVolumeName, MasterVolumeDisplayText, parameterInputField: MasterVolumeInputField, parameterSettingValueInt: VolumeSettings[MasterVolumeKey]);
-        UpdateSettingsWithDictionary(MusicVolumeKey, MusicVolumeName, MusicVolumeDisplayText, parameterInputField: MusicVolumeInputField, parameterSettingValueInt: VolumeSettings[MusicVolumeKey]);
-        UpdateSettingsWithDictionary(SoundFxVolumeKey, SoundFxVolumeName, SoundFxVolumeDisplayText, parameterInputField: SoundFxVolumeInputField, parameterSettingValueInt: VolumeSettings[SoundFxVolumeKey]);
-        UpdateSettingsWithDictionary(DialogueVolumeKey, DialogueVolumeName, DialogueVolumeDisplayText, parameterInputField: DialogueVolumeInputField, parameterSettingValueInt: VolumeSettings[DialogueVolumeKey]);
-        UpdateSettingsWithDictionary(UIVolumeKey, UIVolumeName, UIVolumeDisplayText, parameterInputField: UIVolumeInputField, parameterSettingValueInt: VolumeSettings[UIVolumeKey]);
+    public void ToggleBloomButton()
+    {
+        _Bloom = !_Bloom;
+        BloomButtonText.text = _Bloom ? "ON" : "OFF";
+        Debug.Log(_BloomName + ": " + _Bloom);
+    }
+
+    public void ToggleDepthOfFieldButton()
+    {
+        _DepthOfField = !_DepthOfField;
+        DepthOfFieldButtonText.text = _DepthOfField ? "ON" : "OFF";
+        Debug.Log(_DepthOfFieldName + ": " + _DepthOfField);
+    }
+
+    public void ToggleShadersButton()
+    {
+        _Shaders = !_Shaders;
+        ShadersButtonText.text = _Shaders ? "ON" : "OFF";
+        Debug.Log(_ShadersName + ": " + _Shaders);
+    }
+
+    public void ToggleWeatherEffectsButton()
+    {
+        _WeatherEffects = !_WeatherEffects;
+        WeatherEffectsButtonText.text = _WeatherEffects ? "ON" : "OFF";
+        Debug.Log(_WeatherEffectsName + ": " + _WeatherEffects);
     }
 }

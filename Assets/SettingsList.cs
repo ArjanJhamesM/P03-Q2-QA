@@ -2,94 +2,114 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using UnityEngine.UI;
 
 public class SettingsList : MonoBehaviour
 {
-    // Encapsulation (using protected set;)
-    public string MotionBlurName { get; protected set; } = "Motion Blur "; 
-    public bool MotionBlur { get; protected set; } = false; 
-    public string MotionBlurKey { get; protected set; } = nameof(MotionBlur); 
-    [SerializeField] protected TextMeshProUGUI MotionBlurDisplayText;
+    SettingsLogic settingsLogic;
 
-    public string BloomName { get; protected set;} = "Bloom";
-    public bool Bloom { get; protected set; } = false;
-    public string BloomKey {get; protected set;} = nameof(Bloom);
-    [SerializeField] protected TextMeshProUGUI BloomDisplayText;
+    // Encapsulation (using protected keyword)
+    protected string _MotionBlurName = "Motion Blur";
+    protected bool _MotionBlur = true;
+    public TextMeshProUGUI MotionBlurDisplayText;
+    public TextMeshProUGUI MotionBlurButtonText;
     
-    public string DepthOfFieldName {get; protected set;} = "Depth of Field";
-    public bool DepthOfField {get; protected set;} = false;
-    public string DepthofFieldKey {get; protected set;} = nameof(DepthOfField);
-    [SerializeField] protected TextMeshProUGUI DepthofFieldDisplayText;
-    
-    public string ShadersName { get; protected set;} = "Shaders";
-    public bool Shaders { get; protected set; } = false;
-    public string ShadersKey {get; protected set;} = nameof(Shaders);
-    [SerializeField] protected TextMeshProUGUI ShadersDisplayText;
+    protected string _BloomName = "Bloom";
+    protected bool _Bloom = true;
+    public TextMeshProUGUI BloomDisplayText;
+    public TextMeshProUGUI BloomButtonText;
 
-    public string WeatherEffectsName { get; protected set;} = "Weather Effect";
-    public bool WeatherEffects { get; protected set; } = false;
-    public string WeatherEffectsKey {get; protected set;} = nameof(WeatherEffects);
-    [SerializeField] protected TextMeshProUGUI WeatherEffectsDisplayText;
+    protected string _DepthOfFieldName = "Depth of Field";
+    protected bool _DepthOfField = true;
+    public TextMeshProUGUI DepthOfFieldDisplayText;
+    public TextMeshProUGUI DepthOfFieldButtonText;
 
+    protected string _ShadersName = "Shaders";
+    protected bool _Shaders = true;
+    public TextMeshProUGUI ShadersDisplayText;
+    public TextMeshProUGUI ShadersButtonText;
 
-    public string MoveForward { get; protected set; } = "W";
-    public string MoveForwardName { get; protected set; } = "Move Forward";
-    public string MoveForwardKey { get; protected set; } = nameof(MoveForward);
-    [SerializeField] protected TextMeshProUGUI MoveForwardDisplayText;
-    [SerializeField] protected TMP_InputField MoveForwardInputField;
-
-    public string MoveBackward { get; protected set; } = "S";
-    public string MoveBackwardName { get; protected set; } = "Move Backward";
-    public string MoveBackwardKey { get; protected set; } = nameof(MoveBackward);
-    [SerializeField] protected TextMeshProUGUI MoveBackwardDisplayText;
-    [SerializeField] protected TMP_InputField MoveBackwardInputField;
-
-    public string MoveRightward { get; protected set; } = "D";
-    public string MoveRightwardName { get; protected set; } = "Move Rightward";
-    public string MoveRightwardKey { get; protected set; } = nameof(MoveRightward);
-    [SerializeField] protected TextMeshProUGUI MoveRightwardDisplayText;
-    [SerializeField] protected TMP_InputField MoveRightwardInputField;
-
-    public string MoveLeftward { get; protected set; } = "A";
-    public string MoveLeftwardName { get; protected set; } = "Move Leftward";
-    public string MoveLeftwardKey { get; protected set; } = nameof(MoveLeftward);
-    [SerializeField] protected TextMeshProUGUI MoveLeftwardDisplayText;
-    [SerializeField] protected TMP_InputField MoveLeftwardInputField;
-
-    public string MoveUpward { get; protected set; } = "Spacebar";
-    public string MoveUpwardName { get; protected set; } = "Move Upward";
-    public string MoveUpwardKey { get; protected set; } = nameof(MoveUpward);
-    [SerializeField] protected TextMeshProUGUI MoveUpwardDisplayText;
-    [SerializeField] protected TMP_InputField MoveUpwardInputField;
+    protected string _WeatherEffectsName = "Weather Effects";
+    protected bool _WeatherEffects = true;
+    public TextMeshProUGUI WeatherEffectsDisplayText;
+    public TextMeshProUGUI WeatherEffectsButtonText;
 
 
-    public string MasterVolumeName { get; protected set; } = "Master Volume"; 
-    public int MasterVolume { get; protected set; } = 100; 
-    public string MasterVolumeKey { get; protected set; } = nameof(MasterVolume); 
-    [SerializeField] protected TextMeshProUGUI MasterVolumeDisplayText; 
-    [SerializeField] protected TMP_InputField MasterVolumeInputField;
-    
-    public string MusicVolumeName { get; protected set; } = "Music Volume"; 
-    public int MusicVolume { get; protected set; } = 100; 
-    public string MusicVolumeKey { get; protected set; } = nameof(MusicVolume); 
-    [SerializeField] protected TextMeshProUGUI MusicVolumeDisplayText; 
-    [SerializeField] protected TMP_InputField MusicVolumeInputField;
+    protected string _MoveForward = "W";
+    protected string _MoveForwardName = "Move Forward";
+    public TextMeshProUGUI MoveForwardDisplayText;
+    public TMP_InputField MoveForwardInputField;
 
-    public string SoundFxVolumeName { get; protected set; } = "Sound Effects Volume"; 
-    public int SoundFxVolume { get; protected set; } = 100; 
-    public string SoundFxVolumeKey { get; protected set; } = nameof(SoundFxVolume); 
-    [SerializeField] protected TextMeshProUGUI SoundFxVolumeDisplayText; 
-    [SerializeField] protected TMP_InputField SoundFxVolumeInputField;
+    protected string _MoveBackward = "S";
+    protected string _MoveBackwardName = "Move Backward";
+    public TextMeshProUGUI MoveBackwardDisplayText;
+    public TMP_InputField MoveBackwardInputField;
 
-    public string DialogueVolumeName { get; protected set; } = "Dialogue Volume";
-    public int DialogueVolume { get; protected set; } = 100;
-    public string DialogueVolumeKey { get; protected set; } = nameof(DialogueVolume);
-    [SerializeField] protected TextMeshProUGUI DialogueVolumeDisplayText;
-    [SerializeField] protected TMP_InputField DialogueVolumeInputField;
+    protected string _MoveRightward = "D";
+    protected string _MoveRightwardName = "Move Rightward";
+    public TextMeshProUGUI MoveRightwardDisplayText;
+    public TMP_InputField MoveRightwardInputField;
 
-    public string UIVolumeName { get; protected set; } = "User Interface Volume";
-    public int UIVolume { get; protected set; } = 100;
-    public string UIVolumeKey { get; protected set; } = nameof(UIVolume);
-    [SerializeField] protected TextMeshProUGUI UIVolumeDisplayText;
-    [SerializeField] protected TMP_InputField UIVolumeInputField;
+    protected string _MoveLeftward = "A";
+    protected string _MoveLeftwardName = "Move Leftward";
+    public TextMeshProUGUI MoveLeftwardDisplayText;
+    public TMP_InputField MoveLeftwardInputField;
+
+    protected string _MoveUpward = "Spacebar";
+    protected string _MoveUpwardName = "Move Upward";
+    public TextMeshProUGUI MoveUpwardDisplayText;
+    public TMP_InputField MoveUpwardInputField;
+
+
+    protected string _MasterVolumeName = "Master Volume";
+    protected int _MasterVolume = 100;
+    public TextMeshProUGUI MasterVolumeDisplayText;
+    public TMP_InputField MasterVolumeInputField;
+
+    protected string _MusicVolumeName = "Music Volume";
+    protected int _MusicVolume = 100;
+    public TextMeshProUGUI MusicVolumeDisplayText;
+    public TMP_InputField MusicVolumeInputField;
+
+    protected string _SoundFXVolumeName = "Sound Effects Volume";
+    protected int _SoundFXVolume = 100;
+    public TextMeshProUGUI SoundFXVolumeDisplayText;
+    public TMP_InputField SoundFXVolumeInputField;
+
+    protected string _DialogueVolumeName = "Dialogue Volume";
+    protected int _DialogueVolume = 100;
+    public TextMeshProUGUI DialogueVolumeDisplayText;
+    public TMP_InputField DialogueVolumeInputField;
+
+    protected string _UIVolumeName = "User Interface Volume";
+    protected int _UIVolume = 100;
+    public TextMeshProUGUI UIVolumeDisplayText;
+    public TMP_InputField UIVolumeInputField;
+
+
+    private void Start()
+    {
+        settingsLogic = new SettingsLogic();
+
+        // this is a retarded way to shoehorn inheritance
+        settingsLogic.LoadSettings(_MotionBlurName, MotionBlurDisplayText, parameterSettingButtonText: MotionBlurButtonText, parameterSettingValueBool: _MotionBlur);
+        settingsLogic.LoadSettings(_BloomName, BloomDisplayText, parameterSettingButtonText: BloomButtonText, parameterSettingValueBool: _Bloom);
+        settingsLogic.LoadSettings(_DepthOfFieldName, DepthOfFieldDisplayText, parameterSettingButtonText: DepthOfFieldButtonText, parameterSettingValueBool: _DepthOfField);
+        settingsLogic.LoadSettings(_ShadersName, ShadersDisplayText, parameterSettingButtonText: ShadersButtonText, parameterSettingValueBool: _Shaders);
+        settingsLogic.LoadSettings(_WeatherEffectsName, WeatherEffectsDisplayText, parameterSettingButtonText: WeatherEffectsButtonText, parameterSettingValueBool: _WeatherEffects);
+
+        settingsLogic.LoadSettings(_MoveForwardName, MoveForwardDisplayText, MoveForwardInputField, parameterSettingValueString: _MoveForward);
+        settingsLogic.LoadSettings(_MoveBackwardName, MoveBackwardDisplayText, MoveBackwardInputField, parameterSettingValueString: _MoveBackward);
+        settingsLogic.LoadSettings(_MoveRightwardName, MoveRightwardDisplayText, MoveRightwardInputField, parameterSettingValueString: _MoveRightward);
+        settingsLogic.LoadSettings(_MoveLeftwardName, MoveLeftwardDisplayText, MoveLeftwardInputField, parameterSettingValueString: _MoveLeftward);
+        settingsLogic.LoadSettings(_MoveUpwardName, MoveUpwardDisplayText, MoveUpwardInputField, parameterSettingValueString: _MoveUpward);
+
+        settingsLogic.LoadSettings(_MasterVolumeName, MasterVolumeDisplayText, MasterVolumeInputField, parameterSettingValueInt: _MasterVolume);
+        settingsLogic.LoadSettings(_MusicVolumeName, MusicVolumeDisplayText, MusicVolumeInputField, parameterSettingValueInt: _MusicVolume);
+        settingsLogic.LoadSettings(_SoundFXVolumeName, SoundFXVolumeDisplayText, SoundFXVolumeInputField, parameterSettingValueInt: _SoundFXVolume);
+        settingsLogic.LoadSettings(_DialogueVolumeName, DialogueVolumeDisplayText, DialogueVolumeInputField, parameterSettingValueInt: _DialogueVolume);
+        settingsLogic.LoadSettings(_UIVolumeName, UIVolumeDisplayText, UIVolumeInputField, parameterSettingValueInt: _UIVolume);
+    }
+
 }
